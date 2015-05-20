@@ -1,5 +1,6 @@
-#include <ncurses.h>
 #include <sstream>
 #include <iostream>
+
+#include <ncurses.h>
 
 #include "curses.h"

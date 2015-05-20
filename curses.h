@@ -1,8 +1,6 @@
 #ifndef CURSES_H
 #define CURSES_H
-#include <ncurses.h>
-
-using namespace std;
+#include "main.h"
 class MyCurses
 {
 public:
