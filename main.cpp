@@ -4,7 +4,7 @@ int main(int argc,char *argv[])
 {
 	int x = 10;
 	int y = 20;
-	Curses a(x, y);
+	MyCurses a(x, y);
 	a.noEcho().noCur();
 	while(true) {
 		a(x, y) << "Hello";

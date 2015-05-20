@@ -1,39 +1,24 @@
 #ifndef CURSES_H
 #define CURSES_H
 #include <ncurses.h>
-#include <sstream>
-#include <iostream>
+
 using namespace std;
-class Curses
+class MyCurses
 {
 public:
-	Curses(int x, int y) : Curses() { (*this)(x, y); }
-	Curses() { initscr(); }
-	~Curses() { endwin(); }
+	MyCurses(int x, int y) : MyCurses() { (*this)(x, y); }
+	MyCurses() { initscr(); }
+	~MyCurses() { endwin(); }
 
-	Curses & operator << (const char * str) {
-		printw(str);
-		updateScreen();
-		return *this;
-	}
+	MyCurses & operator << (const char * str);
+	MyCurses & operator << (char c);
+	MyCurses & operator << (int a);
 
-	Curses & operator << (char c) {
-		addch( c | A_BOLD );
-		updateScreen();
-		return *this;
-	}
+	MyCurses & operator () (int x, int y) { move(y, x); return *this; }
+	MyCurses & operator ~  () { clear(); return *this; }
 
-	Curses & operator << (int a) {
-		printw(to_string(a).c_str());
-		updateScreen();
-		return *this;
-	}
-
-	Curses & operator () (int x, int y) { move(y, x); return *this; }
-	Curses & operator ~  () { clear(); return *this; }
-
-	Curses & noCur()  { curs_set(0); return *this; }
-	Curses & noEcho() { noecho(); return *this; }
+	MyCurses & noCur() { curs_set(0); return *this; }
+	MyCurses & noEcho() { noecho(); return *this; }
 
 	void updateScreen() { refresh(); }
 };
