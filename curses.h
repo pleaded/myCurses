@@ -5,7 +5,7 @@ class MyCurses
 {
 public:
 	MyCurses(int x, int y) : MyCurses() { (*this)(x, y); }
-	MyCurses() { initscr(); }
+	MyCurses() { initscr(); updateScreen(); }
 	~MyCurses() { endwin(); }
 
 	MyCurses & operator << (const char * str);
@@ -17,6 +17,9 @@ public:
 
 	MyCurses & noCur() { curs_set(0); return *this; }
 	MyCurses & noEcho() { noecho(); return *this; }
+	MyCurses & yesKeypad() { keypad(stdscr, TRUE); return *this; }
+	MyCurses & yesColor() { start_color(); return *this; }
+	MyCurses & useDefaultColor() { use_default_colors(); return *this; }
 
 	void updateScreen() { refresh(); }
 };

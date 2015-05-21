@@ -1,9 +1,10 @@
 CC      = g++
-CFLAGS  = -std=c++11 -Wall -lncurses -c
+DEPS	= ncurses
+CFLAGS  = -std=c++11 -Wall -l $(DEPS) -c -g
 LFLAGS  = -lncurses
 
 TARGET 	= a
-OBJECTS = main.o curses.o
+OBJECTS = main.o curses.o window.o
 SOURCES = $(OBJECTS:.o=.cpp)
 HEADERS = $(OBJECTS:.o=.h)
 

@@ -7,6 +7,7 @@
 
 /*! Project includes */
 #include "curses.h"
+#include "window.h"
 
 /*! How to add a new .h and .cpp files */
 /** add new.h and new.cpp 

@@ -1,34 +1,16 @@
+// #include "main.h"
 #include "curses.h"
+#include "window.h"
 
 int main(int argc,char *argv[])
 {
-	int x = 10;
-	int y = 20;
-	MyCurses a(x, y);
+	MyCurses a;
 	a.noEcho().noCur();
-	while(true) {
-		a(x, y) << "Hello";
-		char c;
-		c = getch();
-		~a;
-		switch(c) {
-			case 'w': {
-				y--;
-				break;
-			}
-			case 's': {
-				y++;
-				break;
-			}
-			case 'a': {
-				x--;
-				break;
-			}
-			case 'd': {
-				x++;
-				break;
-			}
-		}
-	}
+	Window w(10, 10, 10, 0);
+	w.Border();
+
+	int x, y;
+	w.Move(50, 50);
+
 	getch();
 }
