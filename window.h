@@ -28,19 +28,6 @@ public:
 		wrefresh(w);
 		return *this;	
 	}
-	Window & Move(int y, int x) {
-		for(int i = x0; i < x0 + col; i++) {
-			for(int j = y0; j < y0 + row; j++) {
-				/** TODO: a(i, j) << ' '; */
-				mvaddch(i, j, '@');
-			}
-		}
-		refresh();
-		mvwin(w, y, x);
-		x0 = x; y0 = y;
-		wrefresh(w);
-		return *this;	
-	}
 	Window & operator() (int y, int x) {
 		for(int i = x0; i < x0 + col; i++) {
 			for(int j = y0; j < y0 + row; j++) {

@@ -4,7 +4,7 @@
 class MyCurses
 {
 public:
-	MyCurses(int x, int y) : MyCurses() { (*this)(x, y); }
+	MyCurses(int y, int x) : MyCurses() { (*this)(y, x); }
 	MyCurses() { initscr(); updateScreen(); }
 	~MyCurses() { endwin(); }
 
@@ -12,7 +12,7 @@ public:
 	MyCurses & operator << (char c);
 	MyCurses & operator << (int a);
 
-	MyCurses & operator () (int x, int y) { move(y, x); return *this; }
+	MyCurses & operator () (int y, int x) { move(y, x); return *this; }
 	MyCurses & operator ~  () { clear(); return *this; }
 
 	MyCurses & noCur() { curs_set(0); return *this; }

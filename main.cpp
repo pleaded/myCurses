@@ -33,7 +33,6 @@ int main(int argc,char *argv[])
 				break;
 			}
 		}
-		// w.Move(y, x);
 		w(y, x);
 	}
 	getch();
