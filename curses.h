@@ -21,6 +21,16 @@ public:
 	MyCurses & yesColor() { start_color(); return *this; }
 	MyCurses & useDefaultColor() { use_default_colors(); return *this; }
 
+	MyCurses & vLine(char background_char, int quantity) {
+		vline(background_char, quantity);
+		return *this;
+	}
+	MyCurses & hLine(char background_char, int quantity) {
+		hline(background_char, quantity);
+		return *this;
+	}
+
+
 	void updateScreen() { refresh(); }
 };
 #endif

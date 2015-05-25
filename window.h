@@ -13,6 +13,9 @@ public:
 	Window(int row, int col, int y0, int x0) : row(row), col(col), y0(y0), x0(x0) {
 		w = newwin(row, col, y0, x0);
 	}
+	~Window() {
+		delwin(w);
+	}
 	Window & operator << (const char * str) {
 		wprintw(w, str);
 		wrefresh(w);

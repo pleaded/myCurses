@@ -11,6 +11,8 @@ int main(int argc,char *argv[])
 	a.noEcho().noCur();
 	Window w(10, 10, y, x);
 	w.Border();
+	a(5, 7);
+	a.vLine('@', 10);
 
 	char c = 0;
 	while(c != 'q') {
