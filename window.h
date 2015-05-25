@@ -3,14 +3,14 @@
 #include "main.h"
 class Window
 {
-	int row, col, x0, y0;
+	int row, col, y0, x0;
 	WINDOW * w;
 public:
 	Window() { 
 		getmaxyx(stdscr, row, col); 
 		w = newwin(row, col, 0, 0); 
 	}
-	Window(int row, int col, int x0, int y0) : row(row), col(col), x0(x0), y0(y0) {
+	Window(int row, int col, int y0, int x0) : row(row), col(col), y0(y0), x0(x0) {
 		w = newwin(row, col, y0, x0);
 	}
 	Window & operator << (const char * str) {
@@ -18,8 +18,8 @@ public:
 		wrefresh(w);
 		return *this;
 	}
-	Window & Box (int x = 0, int y = 0) {
-		box(w, x, y);
+	Window & Box (int y = 0, int x = 0) {
+		box(w, y, x);
 		wrefresh(w);
 		return *this;
 	}
@@ -28,18 +28,32 @@ public:
 		wrefresh(w);
 		return *this;	
 	}
-	Window & Move(int x, int y) {
+	Window & Move(int y, int x) {
 		for(int i = x0; i < x0 + col; i++) {
 			for(int j = y0; j < y0 + row; j++) {
-				/** TODO: a(j,i) << ' '; */
-				mvaddch(j, i, ' ');
+				/** TODO: a(i, j) << ' '; */
+				mvaddch(i, j, '@');
 			}
 		}
 		refresh();
-		mvwin(w, x, y);
+		mvwin(w, y, x);
 		x0 = x; y0 = y;
 		wrefresh(w);
 		return *this;	
+	}
+	Window & operator() (int y, int x) {
+		for(int i = x0; i < x0 + col; i++) {
+			for(int j = y0; j < y0 + row; j++) {
+				/** TODO: a(i, j) << ' '; */
+				mvaddch(j, i, ' ');
+			}
+		}
+		refresh(); // to make the window clean
+
+		y0 = y; x0 = x;
+		mvwin(w, y0, x0);
+		wrefresh(w);
+		return *this;
 	}
 };
 #endif
