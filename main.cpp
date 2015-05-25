@@ -4,11 +4,18 @@
 
 int main(int argc,char *argv[])
 {
+	// GUI * game = GUI::Instance();
+	GUI::Init();
+	GUI::noCur();
+	GUI::noEcho();
+	GUI::yesKeypad();
+	GUI::yesColor();
+	GUI::useDefaultColor();
+
 	int x, y;
 	x = 25; y = 5;
 
-	MyCurses a;
-	a.noEcho().noCur();
+	MyCurses a;// = MyCurses::Instance();
 	Window w(10, 10, y, x);
 	w.Border();
 	a(5, 7);
@@ -38,4 +45,5 @@ int main(int argc,char *argv[])
 		w(y, x);
 	}
 	getch();
+	GUI::End();
 }

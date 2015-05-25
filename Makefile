@@ -4,7 +4,7 @@ CFLAGS  = -std=c++11 -Wall -l $(DEPS) -c -g
 LFLAGS  = -lncurses
 
 TARGET 	= a
-OBJECTS = main.o curses.o window.o
+OBJECTS = main.o gui.o curses.o window.o
 SOURCES = $(OBJECTS:.o=.cpp)
 HEADERS = $(OBJECTS:.o=.h)
 

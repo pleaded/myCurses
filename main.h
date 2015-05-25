@@ -6,6 +6,7 @@
 #include <ncurses.h>
 
 /*! Project includes */
+#include "gui.h"
 #include "curses.h"
 #include "window.h"
 
