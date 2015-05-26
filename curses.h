@@ -5,6 +5,7 @@
 class MyCurses
 {
 public:
+	
 	MyCurses & operator << (const char * str);
 	MyCurses & operator << (char c);
 	MyCurses & operator << (int a);
