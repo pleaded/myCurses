@@ -16,10 +16,11 @@ public:
 	~Window() {
 		delwin(w);
 	}
-	
+
 	Window & operator << (const char *);
 	Window & Box (int, int);
 	Window & Border();
+
 
 	Window & operator() (int y, int x) {
 		for(int i = x0; i < x0 + col; i++) {
@@ -33,6 +34,12 @@ public:
 		y0 = y; x0 = x;
 		mvwin(w, y0, x0);
 		wrefresh(w);
+		return *this;
+	}
+	Window & operator() () {
+		mvwin(w, x0, y0);
+		wrefresh(w);
+		refresh();
 		return *this;
 	}
 };
